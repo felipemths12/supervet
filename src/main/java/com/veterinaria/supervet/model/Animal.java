@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name = "animais")
@@ -29,4 +30,12 @@ public class Animal {
     @ManyToOne
     @JoinColumn (name = "tutor_id")
     private Tutor tutor;
+
+    public Integer getIdade() {
+        if (this.dataNascimento == null) {
+            return null;
+        }
+
+        return Period.between(this.dataNascimento, LocalDate.now()).getYears();
+    }
 }

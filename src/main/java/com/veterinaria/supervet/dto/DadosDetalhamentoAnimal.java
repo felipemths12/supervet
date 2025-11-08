@@ -21,7 +21,7 @@ public record DadosDetalhamentoAnimal(
                 animal.getRaca(),
                 animal.getDataNascimento(),
                 animal.getIdade(),
-                new DadosTutorResumido(animal.getTutor());
+                new DadosTutorResumido(animal.getTutor())
         )
     }
 }
