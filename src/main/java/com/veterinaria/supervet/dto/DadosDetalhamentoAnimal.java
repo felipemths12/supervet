@@ -22,6 +22,6 @@ public record DadosDetalhamentoAnimal(
                 animal.getDataNascimento(),
                 animal.getIdade(),
                 new DadosTutorResumido(animal.getTutor())
-        )
+        );
     }
 }
