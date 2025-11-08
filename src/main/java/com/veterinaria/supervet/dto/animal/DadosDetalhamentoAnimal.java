@@ -1,5 +1,6 @@
-package com.veterinaria.supervet.dto;
+package com.veterinaria.supervet.dto.animal;
 
+import com.veterinaria.supervet.dto.tutor.DadosTutorResumido;
 import com.veterinaria.supervet.model.Animal;
 
 import java.time.LocalDate;

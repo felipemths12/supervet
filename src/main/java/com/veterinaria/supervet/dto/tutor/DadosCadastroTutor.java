@@ -1,4 +1,4 @@
-package com.veterinaria.supervet.dto;
+package com.veterinaria.supervet.dto.tutor;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

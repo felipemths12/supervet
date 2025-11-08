@@ -1,8 +1,8 @@
 package com.veterinaria.supervet.service;
 
-import com.veterinaria.supervet.dto.DadosAtualizacaoAnimal;
-import com.veterinaria.supervet.dto.DadosCadastroAnimal;
-import com.veterinaria.supervet.dto.DadosDetalhamentoAnimal;
+import com.veterinaria.supervet.dto.animal.DadosAtualizacaoAnimal;
+import com.veterinaria.supervet.dto.animal.DadosCadastroAnimal;
+import com.veterinaria.supervet.dto.animal.DadosDetalhamentoAnimal;
 import com.veterinaria.supervet.model.Animal;
 import com.veterinaria.supervet.model.Tutor;
 import com.veterinaria.supervet.repository.AnimalRepository;

@@ -1,4 +1,4 @@
-package com.veterinaria.supervet.dto;
+package com.veterinaria.supervet.dto.animal;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
