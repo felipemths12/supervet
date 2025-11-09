@@ -23,7 +23,7 @@ public class AnimalService {
     private TutorRepository tutorRepository;
 
     @Transactional(readOnly = true)
-    public List<DadosDetalhamentoAnimal> listarTodos() {
+    public List<DadosDetalhamentoAnimal> listarTodosAnimais() {
         List<Animal> animais = animalRepository.findAll();
         return animais.stream()
                 .map(DadosDetalhamentoAnimal::new)
@@ -31,7 +31,7 @@ public class AnimalService {
     }
 
     @Transactional(readOnly = true)
-    public DadosDetalhamentoAnimal buscarPorId(Long id) {
+    public DadosDetalhamentoAnimal buscarAnimaisPorId(Long id) {
         Animal animal = animalRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Animal não encontrado com id: " + id));
         return new DadosDetalhamentoAnimal(animal);
