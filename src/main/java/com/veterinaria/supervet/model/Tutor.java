@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "consultas")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class Tutor {
 
     @Id
