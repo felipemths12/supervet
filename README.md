@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
-API REST para o gerenciamento de uma clínica veterinária. Este projeto foi desenvolvido como requisito avaliativo para a disciplina de [Nome da Disciplina] da faculdade [Nome da Faculdade].
+API REST para o gerenciamento de uma clínica veterinária. Este projeto foi desenvolvido como requisito avaliativo para a disciplina de Programação Orientada a Objetos da faculdade Centro Universitário Jorge Amado - UNIJORGE.
 
 A API permite o gerenciamento completo de tutores, animais, veterinários e o agendamento de consultas, seguindo as melhores práticas de desenvolvimento com Spring Boot.
 
@@ -45,11 +45,11 @@ O projeto segue uma arquitetura de 3 camadas (3-Tier) clássica:
 2.  **Configure o Banco de Dados (MySQL):**
     Abra o arquivo `src/main/resources/application.properties` e altere as seguintes linhas com as suas credenciais do MySQL:
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/clinica_db
+    spring.datasource.url=jdbc:mysql://localhost:3306/supervet
     spring.datasource.username=seu_usuario
     spring.datasource.password=sua_senha
     ```
-    *Obs: O schema `clinica_db` será criado automaticamente se não existir (devido ao `?createDatabaseIfNotExist=true`).*
+    *Obs: O schema `supervet` será criado automaticamente se não existir (devido ao `?createDatabaseIfNotExist=true`).*
 
 3.  **Execute a Aplicação:**
     Rode a classe principal `ClinicaVeterinariaApplication.java` pela sua IDE, ou utilize o Maven no terminal:
