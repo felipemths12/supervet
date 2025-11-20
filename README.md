@@ -1,101 +1,93 @@
-# API Clínica Veterinária - SuperVet
+# API Clínica Veterinária - SuperVet 🐾
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/status-concluído-green) ![Java](https://img.shields.io/badge/java-21-orange) ![Spring](https://img.shields.io/badge/spring-boot-3-brightgreen)
 
-API REST para o gerenciamento de uma clínica veterinária. Este projeto foi desenvolvido como requisito avaliativo para a disciplina de Programação Orientada a Objetos da faculdade Centro Universitário Jorge Amado - UNIJORGE.
+Projeto de API REST desenvolvido como requisito avaliativo para a **AV3 da disciplina de Programação Orientada a Objetos (POO)** do **Centro Universitário Jorge Amado (UNIJORGE)**.
 
-A API permite o gerenciamento completo de tutores, animais, veterinários e o agendamento de consultas, seguindo as melhores práticas de desenvolvimento com Spring Boot.
+O sistema gerencia o fluxo de atendimento de uma clínica veterinária, controlando tutores, animais, veterinários e agendamentos de consultas.
 
-## 🚀 Funcionalidades
+## 📋 Funcionalidades
 
-* **Tutores:** CRUD completo de tutores (donos dos animais).
-* **Animais:** CRUD completo de animais, com vínculo obrigatório a um tutor.
-* **Veterinários:** CRUD completo de veterinários.
-* **Consultas:** Agendamento (Create), Listagem (Read) e Cancelamento (Delete) de consultas, vinculando um animal e um veterinário.
+* **Gestão de Tutores:** Cadastro, listagem, atualização e remoção de clientes.
+* **Gestão de Veterinários:** Cadastro e administração do corpo clínico.
+* **Gestão de Animais:** Cadastro de pacientes com vínculo obrigatório a um Tutor existente.
+* **Agendamento de Consultas:**
+    * Registro de consultas vinculando um Animal e um Veterinário.
+    * Validação de datas (não permite agendamento no passado).
+    * Registro de diagnóstico (atualização da consulta).
+    * Cancelamento de consultas.
+* **Documentação Automática:** Interface interativa via Swagger UI.
 
 ## 🛠️ Tecnologias Utilizadas
 
 * **Java 21**
 * **Spring Boot 3**
-* **Spring Data JPA:** Para persistência de dados.
-* **Spring Web:** Para criação dos endpoints REST.
-* **Spring Validation:** Para validação dos DTOs de entrada.
-* **MySQL:** Banco de dados relacional.
-* **Maven:** Gerenciador de dependências.
+* **Spring Data JPA** (Persistência de dados)
+* **Spring Web** (API REST)
+* **Spring Validation** (Validação de dados e DTOs)
+* **SpringDoc OpenAPI** (Documentação Swagger)
+* **MySQL** (Banco de dados relacional)
+* **Maven** (Gerenciamento de dependências)
 
-## 🏛️ Arquitetura
+## 🏛️ Arquitetura do Projeto
 
-O projeto segue uma arquitetura de 3 camadas (3-Tier) clássica:
+O projeto segue a arquitetura em camadas para garantir a separação de responsabilidades:
 
-* **`Controller` (Camada de Apresentação):** Recebe as requisições HTTP, valida os dados de entrada (DTOs) e retorna as respostas.
-* **`Service` (Camada de Negócio):** Contém toda a lógica de negócio, validações de regras e faz a ponte entre os controllers e os repositórios.
-* **`Repository` (Camada de Dados):** Interface que utiliza o Spring Data JPA para se comunicar com o banco de dados.
+1.  **Controller:** Recebe as requisições HTTP e retorna os DTOs.
+2.  **Service:** Contém a lógica de negócios e regras de validação.
+3.  **Repository:** Interface de comunicação com o banco de dados.
+4.  **Model/Entity:** Representação das tabelas do banco.
+5.  **DTOs:** Objetos de transferência de dados para segurança e filtragem.
 
-### Padrões Adotados
+## 📚 Documentação da API (Swagger)
 
-* **DTO (Data Transfer Object):** Os controllers recebem e retornam DTOs para desacoplar a API das entidades do banco de dados e evitar a exposição de dados sensíveis.
+O projeto possui documentação automática. Após iniciar a aplicação, acesse:
+
+👉 **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
+
+Através dessa interface, é possível visualizar todos os endpoints e testar as requisições diretamente pelo navegador.
 
 ## ⚙️ Como Executar o Projeto
+
+### Pré-requisitos
+* Java JDK 21 instalado.
+* Maven instalado.
+* MySQL Server rodando.
+
+### Passo a Passo
 
 1.  **Clone o repositório:**
     ```bash
     git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
     ```
 
-2.  **Configure o Banco de Dados (MySQL):**
-    Abra o arquivo `src/main/resources/application.properties` e altere as seguintes linhas com as suas credenciais do MySQL:
+2.  **Configure as Credenciais:**
+    Abra o arquivo `src/main/resources/application.properties` e verifique se o usuário e senha do MySQL conferem com o seu ambiente:
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/supervet
     spring.datasource.username=seu_usuario
     spring.datasource.password=sua_senha
     ```
-    *Obs: O schema `supervet` será criado automaticamente se não existir (devido ao `?createDatabaseIfNotExist=true`).*
+    *Nota: O banco de dados `supervet` será criado automaticamente na primeira execução.*
 
 3.  **Execute a Aplicação:**
-    Rode a classe principal `ClinicaVeterinariaApplication.java` pela sua IDE, ou utilize o Maven no terminal:
-    ```bash
-    mvn spring-boot:run
-    ```
+    * Pela IDE (IntelliJ/Eclipse/VSCode): Rode a classe `SupervetApplication.java`.
+    * Pelo Terminal:
+        ```bash
+        mvn spring-boot:run
+        ```
 
-4.  **Teste a API:**
-    A aplicação estará disponível em `http://localhost:8080`. Você pode usar o Postman ou Insomnia para testar os endpoints.
+## 🗺️ Endpoints Principais
 
-## 🗺️ Endpoints da API
+| Recurso | Método | Endpoint | Descrição |
+| :--- | :--- | :--- | :--- |
+| **Tutores** | `POST` | `/tutores` | Cadastra um novo tutor |
+| | `GET` | `/tutores` | Lista todos os tutores |
+| **Animais** | `POST` | `/animais` | Cadastra animal (Requer ID do Tutor) |
+| | `GET` | `/animais` | Lista animais com dados do tutor |
+| **Veterinários** | `POST` | `/veterinarios` | Cadastra veterinário |
+| | `GET` | `/veterinarios` | Lista veterinários |
+| **Consultas** | `POST` | `/consultas` | Agenda consulta (Requer ID Animal e Vet) |
+| | `GET` | `/consultas` | Lista histórico de consultas |
 
-### Tutores (`/tutores`)
-
-| Verbo | Endpoint | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/tutores` | Cadastra um novo tutor |
-| `GET` | `/tutores` | Lista todos os tutores |
-| `GET` | `/tutores/{id}` | Busca um tutor por ID |
-| `PUT` | `/tutores/{id}` | Atualiza dados de um tutor |
-| `DELETE` | `/tutores/{id}` | Deleta um tutor |
-
-### Animais (`/animais`)
-
-| Verbo | Endpoint | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/animais` | Cadastra um novo animal |
-| `GET` | `/animais` | Lista todos os animais |
-| `GET` | `/animais/{id}` | Busca um animal por ID |
-| `PUT` | `/animais/{id}` | Atualiza dados de um animal |
-| `DELETE` | `/animais/{id}` | Deleta um animal |
-
-### Veterinários (`/veterinarios`)
-
-| Verbo | Endpoint | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/veterinarios` | Cadastra um novo veterinário |
-| `GET` | `/veterinarios` | Lista todos os veterinários |
-| `GET` | `/veterinarios/{id}`| Busca um veterinário por ID |
-| `PUT` | `/veterinarios/{id}`| Atualiza dados de um veterinário |
-| `DELETE` | `/veterinarios/{id}`| Deleta um veterinário |
-
-### Consultas (`/consultas`)
-
-| Verbo | Endpoint | Descrição |
-| :--- | :--- | :--- |
-| `POST` | `/consultas` | Agenda uma nova consulta |
-| `GET` | `/consultas` | Lista todas as consultas |
-| `DELETE` | `/consultas/{id}` | Cancela uma consulta |
+---
+Desenvolvido por Camila Gomes, Felipe Matheus dos Santos, Joana Santos, Marcos Henrique Castro - UNIJORGE
